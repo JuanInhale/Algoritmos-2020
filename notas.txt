@@ -1,0 +1,19 @@
+El ejercicio 10 tiene un ejemplo de como usar un bloc
+con informacion para usarlo en phyton.
+
+ejemplo un archivo "song.txt", con datos de una cancion.
+
+Para luego convertirlo en un objecto de clase cancion.
+
+Elementos repetidos
+
+elemento nuevo
+
+si la lista esta vacia - lo agrego
+
+si la lista tiene elementos - recorro la lista comparando
+				elemento por elemento con
+				el nuevo elemento.
+					- si no hay ningun elemento igual, el contador se queda en false
+				si el contador =  false
+					- agrego el nuevo elemento.

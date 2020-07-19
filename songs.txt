@@ -1,0 +1,6 @@
+do i wanna know;Artic Monkeys;5;2
+mokingbitd;eminem;3;5
+piece;meduza;2;5
+cancion2;Artic Monkeys;5;2
+lose;eminem;3;5
+ratata;meduza;10;5

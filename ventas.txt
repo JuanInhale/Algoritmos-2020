@@ -1,0 +1,16 @@
+01;TIE;5000;True;Jar Jar Bins 
+02;destructor estelar;6000;False;Solo
+03;AT-AT;7000;True;Luke
+04;AT-ST;8000;False;R2D2
+05;AT-TE;9000;True;Desconocido
+06;TIE;5000;False;DEsconocido
+07;destructor estelar;6000;True;Desconocido
+08;AT-AT;7000;False;Desconocido
+09;AT-ST;8000;True;Desconocido
+10;AT-TE;9000;False;Darth Vader
+A12;Astillero;6000;True;Darth Vader
+B56;Astillero;6000;True;Darth Vader
+C93;Astillero;6000;True;Darth Vader
+D56;Astillero;6000;False;Desconocido
+E77;Astillero;6000;False;Darth Vader
+F11;Astillero;6000;False;Darth Vader
