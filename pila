@@ -1,0 +1,761 @@
+from pila import Pila , apilar, desapilar, pila_vacia, pila_llena, tamanio, cima;
+from random import randint;
+
+# Pila con numeros randoms
+'''
+pila1 = Pila()
+pilaaux = Pila()
+
+while (not pila_llena(pila1)):   
+    apilar(pila1, randint(0,100))
+print("Pila con numeros randoms ")
+print(pila1.datos)
+'''
+# Determinar le numero de ocurrencias de un determinado elemento en una pila.
+'''
+pila2 = Pila()
+while (not pila_llena(pila2)):
+    a = input("Ingrese un numero: ")
+    apilar(pila2, a)
+
+buscado = input("Buscar ocurrencia: ")
+
+print('Buscado: ',buscado)
+print(pila2.datos) 
+   
+def repetidos(pila,buscar):
+    contador = 0
+    while (not pila_vacia(pila2)):
+        a = desapilar(pila2)
+        if (a == buscar):
+            contador += 1
+    return contador
+    
+print(repetidos(pila2,buscado))
+'''
+# Eliminar de una pila todos los elementos impares,
+# en la pila deben quedar los numeros pares
+'''
+print(" Ejericicio 2 - Pila con numeros pares")
+
+pilapares = Pila()
+
+# Uso la pila con numeros randoms.
+def eliminar_pares(p,pares):
+    while (not pila_vacia(p)):
+        aux = int(desapilar(p))
+        if (aux % 2) == 0:
+            apilar(pares, aux)
+
+eliminar_pares(pila1,pilapares)
+print(pilapares.datos)   
+'''
+def ingresomanualpila(pila):
+    while (not pila_llena(pila)):
+        a = input("Ingrese un numero: ")
+        apilar(pila, a)
+
+def randomspila(pila):
+    while (not pila_llena(pila)):
+        apilar(pila, randint(0,100))
+
+def invert(pila1,pila2):
+    while (not(pila_vacia(pila1))):
+        a = desapilar(pila1)
+        apilar(pila2,a)
+
+def invertir(pila):
+    pilaux = Pila()    
+    while(not pila_vacia(pila)):
+        aux = desapilar(pila)
+        apilar(pilaux,aux)
+    return pilaux
+    
+def compararpilas(pila,pila2):
+    igualdad = True
+    if (tamanio(pila) == tamanio(pila2)):
+        while (not pila_vacia(pila) and (igualdad == True)):
+            a = desapilar(pila)
+            b = desapilar(pila2)
+            if (a == b):
+                igualdad = True
+                return igualdad
+            else:
+                igualdad = False
+                return igualdad
+    return igualdad
+
+# Reemplazar todas las ocurrencias de un determinado elemento de una pila.
+'''
+pila3 = Pila()
+ingresomanualpila(pila3)
+print(pila3.datos) 
+pilare = Pila()
+
+def reemplazar(pila,pilaree,buscado,reemplazar):
+    while (not(pila_vacia(pila3))):    
+        a = int (desapilar(pila))
+        if (a == buscado):            
+            apilar(pilaree,reemplazar)
+        else:
+            apilar(pilaree,a)
+    invert(pilaree,pila)
+        
+busco = int(input("Numero para buscar: "))
+reemplazo = int(input("Numero que reemplaza el buscado : "))
+reemplazar(pila3,pilare,busco,reemplazo)
+print("Pila final: ")
+print(pila3.datos)
+'''
+
+# Determinar si una cadena de caracteres es palindromo
+'''
+pila4 = Pila()
+pila5 = Pila()
+
+palabra = input("Ingrese una palabra de hasta 5 caracteres: ")
+#palabra2 = input("Ingrese otra palabra de hasta 5 caracteres: ")
+
+def pilapalabra(pila,palab):
+    if (len(palabra)<6):
+        for e in palabra:
+            apilar(pila,e)
+                       
+pilapalabra(pila4,palabra)
+#pilapalabra(pila5,palabra2) 
+print(pila4.datos)
+#print(pila5.datos)
+
+
+
+def compararpilas(pila,pila2):
+    igualdad = True
+    if (tamanio(pila) == tamanio(pila2)):
+        while (not pila_vacia(pila) and (igualdad == True)):
+            a = desapilar(pila)
+            b = desapilar(pila2)
+            if (a == b):
+                igualdad = True
+                return igualdad
+            else:
+                igualdad = False
+                return igualdad
+    return igualdad
+                        
+def palindromo(pila4):
+    piladerecha = Pila()
+    pilaizquierda = Pila()
+    t = tamanio(pila4)
+    cont = 0 
+    mitad = (t//2)
+    while (not pila_vacia(pila4)):
+        a = desapilar(pila4)
+        cont += 1
+        if (t%2 == 0):
+            if (cont <= mitad):
+                apilar(piladerecha,a)
+            elif (cont >= mitad+1):
+                apilar(pilaizquierda,a)
+        else:
+            if (cont <= mitad):
+                apilar(piladerecha,a)
+            elif (cont >= mitad+2):
+                apilar(pilaizquierda,a)
+    print(piladerecha.datos)
+    print(invertir(pilaizquierda).datos)
+    if (compararpilas(pilaizquierda,piladerecha) == True):
+        print("La palabra es palindroma")
+    else:
+        print("La palabra no es palindroma")
+    
+palindromo(pila4)
+
+#pila4 = invertir(pila4)  
+#print(pila4.datos)
+#if (compararpilas(pila4,pila5) == True):
+#    print("Son iguales")
+#else:
+#    print("Son diferents")
+'''
+
+#Eliminar el n-esimo elemento debajo de la cima de una pila de palabras.
+'''
+pila6 = Pila()
+
+def insertarpalabras(pila):
+    while (not pila_llena(pila)):
+        palabra = input("Ingrese una palabra: ")
+        apilar(pila,palabra)
+
+def eliminarnsimo(pila,n):
+    px = Pila()
+    px2 = Pila()
+    cont = 0
+    while (not (pila_vacia(pila))):
+        a = desapilar(pila)        
+        cont += 1
+        if (cont != n):
+            apilar(px,a)
+    px2 = invertir(px)
+    return px2
+
+insertarpalabras(pila6)
+print(pila6.datos)
+pila6 = eliminarnsimo(pila6,2)
+print(pila6.datos)
+'''
+
+# Barajas españolas parte 1
+# generar numeros random 1 al 12
+# generar el palo de la carta
+'''
+def mostrarmazo(mazo):
+    while (not pila_vacia(mazo)):
+        a = desapilar(mazo)
+        print(a)
+
+def generarcartas(pila):
+    while (not pila_llena(pila)):
+        for e in range(48):
+            numero = randint(1,12)
+            palo = tipo[randint(0,3)]
+            carta = [numero, palo]
+            apilar(pila,carta)
+
+def oro(mazo):
+    oro = Pila()
+    espada = Pila()
+    basto = Pila()
+    copa = Pila()
+    while (not pila_vacia(mazo)):
+        card = desapilar(mazo)
+        if (card[1] == "Oro"):
+            apilar(oro,card)
+        elif (card[1] == "Espada"):
+            apilar(espada,card)
+        elif (card[1] == "Basto"):
+            apilar(basto,card)
+        elif (card[1] == "Copa"):
+            apilar(copa,card)
+    print(oro.datos)
+    print(espada.datos)
+    print(basto.datos)
+    print(copa.datos)
+
+def orden(oro):
+    ordenado = Pila()
+    while (not pila_vacia(oro)):
+        a = desapilar(oro)
+        if pila_vacia(ordenada):    
+            apilar(ordenado,a)
+        else:
+            if(cima(oro) < desapilar(ordenada)):
+            
+mazo1 = Pila()
+tipo = ["Oro","Espada","Basto","Copa"]
+generarcartas(mazo1)
+print(mazo1.datos)
+oro(mazo1)
+
+'''
+# Resolver el problema del factorial usando una pila.
+'''
+f = int(input("Factorial de: "))
+pilaf = Pila()
+factorial = 1
+for e in range(1,f+1):
+    apilar(pilaf,e)
+while (not(pila_vacia(pilaf))):
+    n = desapilar(pilaf)    
+    factorial = factorial * n
+print(factorial)
+'''
+# Insertar el nombre de la dios griega Atenea en la i-ésima posicion
+# debajo de la cima de una pila con nombres de dioses griegos.
+'''
+gads = ["Zeus","Hera","Poseidon","Ares","Hermes","Afrodita","Apolo","Artemisa"]
+gods = Pila()
+gods2 = Pila()
+for e in gads:
+    print(e)    
+    apilar(gods,e)
+    
+print("Pila  gods.")    
+print(gods.datos)
+p = int(input("Ingrese la posicion para insertar a Atenea: "))
+contador = 1
+while (not pila_vacia(gods)):
+    dios = desapilar(gods)
+    if (p == contador):
+        apilar(gods2,"Atenea")
+        apilar(gods2,dios)
+    else:
+        apilar(gods2,dios)
+    contador += 1
+
+print(gods2.datos)
+print(invertir(gods2).datos)
+'''
+#Dada una pila de letras, determinar cuantas vocales tiene.
+'''
+Letras = Pila()
+L = ["a","e","i","o","u","a","e","z","y","x",]
+for e in L:
+    apilar(Letras,e)
+print(Letras.datos)
+
+def nvocales(pila):
+    contador = 0
+    while (not pila_vacia(Letras)):
+        a = desapilar(Letras)
+        if (a == "a") or (a == "e") or(a == "i") or(a == "o") or(a == "u"):
+            contador += 1
+    return contador      
+
+print(nvocales(Letras))
+'''
+# Dada una pila de nombres de Star Wars, implemente una funcion
+# que permita determinar si Leia Organa o Boba Fett estan 
+# en dicha pila sin perder los datos.
+'''
+Stars = Pila()
+Stars2 = Pila()
+Lista = ["Leia Organa","Boba Fett","Chuwaka","R2D2","Luke Skywalker","Darth Vader","Han Solo","C3PO"]
+
+for e in Lista:
+    apilar(Stars,e)
+contador = 0
+while (not (pila_vacia(Stars))):
+    Personaje = desapilar(Stars)
+    if (Personaje == "Leia Organa"):
+        print("Leia está en la lista. ")
+        contador += 1
+    elif (Personaje == "Boba Fett"):
+        print("Boba se encuentra en la lista. ")
+        contador += 1
+    apilar(Stars2,Personaje)
+if (contador == 0):
+    print("Ninguna se encuentra en la lista. ")
+    
+Stars = invertir(Stars2)
+print(Stars.datos)
+'''
+#Quicksort
+def quicksort(vector, primero, ultimo):
+    pila = Pila()
+    apilar(pila[primero, ultimo])
+    while(not pila_vacia(pila)):
+        dato = desapilar(pila)
+        primero = dato[0]
+        ultimo = dato[1]
+        if(primero<ultimo):
+            pivot = ultimo
+            izq = primero
+            der = ultimo-1
+            while(izq < der):
+                while(vector[izq] < vector[pivot]):
+                    izq += 1
+                while(vector[der] > vector[pivot]):
+                    der -= 1
+                if(izq < der):
+                    vector[izq], vector[der] = vector[der], vector[izq]
+            if(vector[izq]>vector[pivot]):
+                vector[izq], vector[pivot] = vector[pivot], vector[izq]
+            apilar(pila,[primero, izq-1])#quicksort(vector, primero, izq-1)
+            apilar(pila,[izq+1, ultimo])#quicksort(vector, izq+1, ultimo)
+
+#def ordenarpila(pila):
+#    pilaaux = Pila()
+#    tam = tamanio(pila)
+#    aux = desapilar(pila)
+#    apilar = pila
+#    for e in range(1, tam)
+        
+#pilaprueba = Pila()
+#for e in range(0,10):
+#    apilar (pilaprueba , randint(1,10))
+#print(pilaprueba.datos)
+
+# ejericico 13
+'''
+pila1 = Pila()
+for e in range(0,10):
+    apilar (pila1 , randint(1,10))
+        
+def buscarmenor(pila):
+    pilaordenada = Pila()
+    menor = desapilar(pila)
+    while (not pila_vacia(pila)):
+        a = desapilar(pila)
+        if (menor > a):
+            menor = a
+        else:
+            apilar(pilaordenada,a)
+    print(menor)
+    print(pilaordenada.datos)
+    buscarmenor(pilaordenada)
+            
+#    apilar(pilaordenada,menor)
+#    print(pilaordenada.datos)        
+buscarmenor(pila1)
+'''
+#Star wars v y vii
+# Configurar la pila en 6
+'''
+starv = Pila()
+starvii = Pila()
+
+v = ["Luke","Leia","Han","Obi-wan ","Chewbacca","lando"]
+vii = ["Han","Chewbacca","Leia","Snoke","Rey","Luke"]
+for e in vii:
+    apilar(starv,e)
+for e in v:
+    apilar(starvii,e)
+print(starv.datos)
+print(starvii.datos)
+
+def interseccion(sv,svii):
+    inter = Pila()
+    resto = Pila()
+    while (not pila_vacia(sv)):
+        v = desapilar(sv)                
+        while not(pila_vacia(svii)):
+            vii = desapilar(svii)
+            apilar(resto,vii)
+            if (v == vii):
+                apilar(inter,v)
+        while not(pila_vacia(resto)):
+            r = desapilar(resto)
+            apilar(svii,r)
+    return inter
+
+print(interseccion(starv,starvii).datos)
+'''
+# Dado un parrafo que finaliza en un punto.
+'''
+parrafo = "¿Como p0d3m0$ l1d1@r c0n ez0?." # El parrafo que se va a utilizar para el ejercicio.
+tam = len(parrafo)
+vocales = Pila()
+consonantes = Pila()
+simbolos = Pila()
+parraf = Pila()
+for e in range(0,tam):
+    c = parrafo[e]    
+    if c != ".":
+        apilar(parraf,c)
+
+print(parraf.datos)
+
+while not(pila_vacia(parraf)):
+    a = desapilar(parraf)
+    if (a == "a" or a == "e" or a == "i" or a == "o" or a == "u"):
+        apilar(vocales,a)
+    elif((a == "b" or a == "c" or a == "d" or a == "f" or a == "g" or a == "h" or a == "s" or a == "j" or a == "k" or a == "l" or a == "m" or a == "ñ" or a == "p" or a == "q" or a == "r" or a == "s" or a == "t" or a == "v" or a == "w" or a == "x" or a == "z")):
+        apilar(consonantes,a)
+    else:
+        apilar(simbolos,a)
+        
+print(tam)
+print(vocales.datos)
+print(consonantes.datos)
+print(simbolos.datos)
+print("Cantidad de caracteres en :")
+print("Vocales " , vocales.cima+1)       
+print("Consonantes " , consonantes.cima+1)
+print("Simbolos " , simbolos.cima+1)
+
+# Cantidad de espacios en la pila
+def espacios(pila):
+    cont = 0    
+    while (not pila_vacia(pila)):
+        esp = desapilar(pila)
+        if (esp == " "):
+            cont += 1
+    return cont
+
+print(espacios(simbolos))
+
+#Porcentaje de vocales sobre total
+
+def porcentajes(vocals,conson,t):
+    print("Porcentaje con respecto al total de caracteres, incluido los simbolos y espacios. ")
+    porcentajevocales = ((vocals.cima+1) * 100) / tam
+    print("El porcentaje de vocales : ", porcentajevocales , "%")
+    porcentajeconsonantes = ((conson.cima+1) * 100) / tam
+    print("El porcentaje de consonantes : ", porcentajeconsonantes , "%")
+    tot2 = vocals.cima+1 + conson.cima+1
+    print(tot2)
+    print("Porcentaje con respecto al total de caracteres alfabeticos. ")
+    porcentajevocales = ((vocals.cima+1) * 100) / tot2
+    print("El porcentaje de vocales : ", porcentajevocales , "%")
+    porcentajeconsonantes = ((conson.cima+1) * 100) / tot2
+    print("El porcentaje de consonantes : ", porcentajeconsonantes , "%")
+
+porcentajes(vocales,consonantes,tam)
+
+# Cantidad de numeros en la pila simbolos
+
+def numeros(pila):
+    cont = 0
+    while (not pila_vacia(pila)):
+        x = desapilar(pila)
+        if x.isdigit():
+            cont += 1
+    return cont
+
+numeros(simbolos)
+
+# Cantidad de vocales y otros caracteres son iguales.
+
+def igualdad1(voc,sim):
+    if (voc.cima+1 == sim.cima+1):
+        return print("Son iguales. ")
+    else:
+        return print("No son iguales. ")
+     
+igualdad1(vocales,simbolos)
+# Encontrar una z en la pila de consonantes
+def encontrarz(con):
+    while (not pila_vacia(con)):
+        aux = desapilar(con)        
+        if (aux == "z"):
+            print("Se encontro el caracter z. ")
+
+encontrarz(consonantes)
+'''
+# Ejercicio 17 Objetos de oficina. Nombre y peso. 
+# poner la pila en 7, que son la cantidad de objetos.
+'''
+pilaoficina = Pila()
+objetos = [["Escritorio",10],["Portatil",1],["lampara",1],["planillas",20],["silla", 3],["impresora",5],["impresora 3D",150]]
+#print(objetos[0][1])
+tam = len(objetos)
+#print(tamanio)
+#for e in range(0,tam):
+#    print(objetos[e][1])
+pilaaux = Pila()
+for e in range(0,tam):
+    if (pila_vacia(pilaoficina)):
+        apilar(pilaoficina,objetos[e])
+    else:
+        cimaa = int(cima(pilaoficina)[1])
+        obj = int(objetos[e][1])
+        if (cimaa <= obj):
+            #print (a)
+            #print(objetos[e])
+            apilar(pilaoficina,objetos[e])
+        else:
+#            print(cimaa)
+#            print(obj)
+            while(not pila_vacia(pilaoficina) and (cimaa > obj)):
+                cimaa = int(cima(pilaoficina)[1])                
+                aux = desapilar(pilaoficina)
+                apilar(pilaaux, aux)
+            apilar(pilaoficina,objetos[e])
+            while( not pila_vacia(pilaaux)):
+                aux = desapilar(pilaaux)
+                apilar(pilaoficina,aux)
+    print(pilaoficina.datos)
+'''
+#for e in range(0,tam):
+#    apilar(pilaoficina,objetos[e])        
+#print(pilaoficina.datos)
+#print(cima(pilaoficina)[1])
+#while(not pila_vacia(pilaoficina)):
+#    objetos = desapilar(pilaoficina)
+#    print(objetos)
+
+# Peliculas titulo, estudio, año.
+# la pila la configuro en 3 porque son muchos datos.
+'''
+class pelicula():
+    def __init__(self):
+        self.nombre = None
+        self.estudio = None
+        self.anio = None 
+          
+def ingresarPelicula(pila,nombre,estudio,anio):
+    peli = pelicula()
+    peli.nombre = nombre
+    peli.estudio = estudio
+    peli.anio = anio
+    apilar(pila,peli)
+
+def mostrarPila(pila):
+    while (not pila_vacia(pila)):
+        dato = desapilar(pila)
+        print(dato.nombre,dato.estudio,dato.anio)
+
+def ingresarPelis(pila):
+    while (not pila_llena(pila)):
+        n = input("Nombre ")
+        e = input("Estudio ")
+        a = int(input("anio "))
+        ingresarPelicula(pila,n,e,a)  
+
+def buscarpelis(pila):
+    while (not pila_vacia(pila)):
+        aux = desapilar(pila)
+        if (aux.anio == 2014):
+            print("Pelicula estrenada en el 2014, ",aux.nombre)
+
+def cantidadpelis(pila):
+    cont = 0
+    while (not pila_vacia(pila)):
+        aux = desapilar(pila)
+        if (aux.anio == 2018):
+            cont += 1
+    return print(cont)
+
+def peliculasmarvel(pila):
+    while (not pila_vacia(pila)):
+        aux = desapilar(pila)
+        if (aux.anio == 2018) and (aux.estudio == "marvel"):
+            print("La pelicula ",aux.nombre," se estreno en ", aux.anio,", en el estudio ",aux.estudio)
+            
+# probar de a una porque sino la pila queda vacia.
+pilapeliculas = Pila()
+ingresarPelis(pilapeliculas)
+# mostrarPila(pilapeliculas)
+# buscarpelis(pilapeliculas)
+# cantidadpelis(pilapeliculas)
+peliculasmarvel(pilapeliculas)
+'''
+# Pasos del robot
+'''
+# Asignar pila en 7
+pasos = ["norte","este","oeste","sur","noreste","noroeste","sureste","suroeste"]
+n = len(pasos)
+print(n)
+def pasosderobot(pila):
+    while not(pila_llena(pila)):
+        paso = randint(0,len(pasos))        
+        apilar(pila,pasos[paso])
+
+def caminodevuelta(pila):
+    camino = Pila()
+    while (not pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(camino,a)
+    return camino.datos
+    
+robot = Pila()
+pasosderobot(robot)
+print(robot.datos)
+print(caminodevuelta(robot))
+'''
+# Abril, temperaturas. Maximas, minimas, promedio
+
+def minimo(pila):
+    pilaaux = Pila()
+    mini = desapilar(pila)
+    apilar(pilaaux,minimo)
+    while not(pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(pilaaux,a)
+        if (a < mini):
+            mini = a
+    while (not pila_vacia(pilaaux)):
+        b = desapilar(pilaaux)
+        apilar(pila,b)
+    return mini
+
+def maximo(pila):
+    pilaaux = Pila()
+    m = desapilar(pila)
+    apilar(pilaaux,maximo)
+    while not(pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(pilaaux,a)
+        if (a > m):
+            m = a
+    while (not pila_vacia(pilaaux)):
+        b = desapilar(pilaaux)
+        apilar(pila,b)
+    return m
+
+def promedio(pila):
+    pilaaux = Pila()
+    acum = 0
+    tam = tamanio(pila)
+    while (not pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(pilaaux,a)
+        acum += a
+    res = (acum // tam)
+    while(not pila_llena(pila)):
+        b = desapilar(pilaaux)
+        apilar(pila,b)
+    return res
+   
+def ensimaMedia(pila,promedio):
+    pilaaux = Pila()
+    ensima = 0
+    while(not pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(pilaaux,a)
+        if (a > promedio):
+            ensima += 1 
+    while (not pila_llena(pila)):
+        b = desapilar(pilaaux)
+        apilar(pila,b)
+    return ensima
+
+def debajoMedia(pila,promedio):
+    pilaaux = Pila()
+    debajo = 0
+    while(not pila_vacia(pila)):
+        a = desapilar(pila)
+        apilar(pilaaux,a)
+        if a < promedio:
+            debajo += 1
+    while (not pila_llena(pila)):
+        b = desapilar(pilaaux)
+        apilar(pila,b)
+    return debajo
+  
+    
+def cargartemperaturas(pila):
+    while (not pila_llena(pila)):
+        apilar(abril,randint(0,40))
+    
+abril = Pila()
+cargartemperaturas(abril)
+print("Datos abril")
+print(abril.datos)
+
+# Hubo un problema y no se pueden medir las temperaturas maxima y minimas a la vez.
+# Probar por separado.
+
+#print("La temperatura maxima es de: ")
+#print(maximo(abril))
+
+#print("La temperatura minima es de: ")
+#print(minimo(abril))
+
+
+prom = promedio(abril)
+print("La temperatura promedio es de: ", prom)
+
+print("Cantidad de temperaturas por ensima de la media: ",ensimaMedia(abril,prom))
+
+print("Cantidad de temperaturas por debajo de la media: ",debajoMedia(abril,prom))
+
+# fibonacci
+'''
+def fibonacci(n):
+	if (n == 0):
+		return 0
+	elif (n == 1) or (n == 2):
+		return 1
+	else:
+		return (fibonacci(n-2)+fibonacci(n-1))
+  
+def pilaFibonacci(pila,n):
+    for i in range(0,n):
+        apilar(pila,fibonacci(i))
+    return pila
+            
+fib = Pila()
+print(pilaFibonacci(fib,5).datos)
+'''
